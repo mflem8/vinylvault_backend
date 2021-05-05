@@ -9,3 +9,5 @@
 rock = Genre.create(name: "Rock")
 jazz = Genre.create(name: "Jazz")
 country = Genre.create(name: "Country")
+
+Vinyl.create(title: "Appetite For Destruction", artist: "Guns N' Roses", image_url: "https://images-na.ssl-images-amazon.com/images/I/91ksS-ioRpL._SX466_.jpg", genre_id: rock.id)

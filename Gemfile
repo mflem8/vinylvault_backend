@@ -20,6 +20,7 @@ gem 'puma', '~> 4.1'
 # gem 'image_processing', '~> 1.2'
 
 #JSON
+gem 'fast_jsonapi'
 gem 'jsonapi-serializer'
 gem 'active_model_serializers'
 

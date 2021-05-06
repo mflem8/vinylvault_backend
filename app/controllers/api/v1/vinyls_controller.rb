@@ -1,12 +1,22 @@
 class Api::V1::VinylsController < ApplicationController
 
     def index
-        @vinyls = Vinyl.all
-        render json: @vinyls
+        vinyls = Vinyl.all
+        render json: VinylSerializer.new(vinyls)
+    end
+
+    def show
+        vinyl = Vinyl.find(params[:id])
+        render json: VinylSerializer.new(vinyl)
     end
 
     def create
         vinyls = Vinyl.new(vinyl_params)
+        if vinyl.save
+            render json: vinyl, status: :accepted
+        else
+            render json: {errors: vinyl.errors.full_messages}, status: :unprocessible_entity
+        end
     end
 
     private

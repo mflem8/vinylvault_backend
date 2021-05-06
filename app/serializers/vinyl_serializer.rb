@@ -1,4 +1,4 @@
 class VinylSerializer
   include JSONAPI::Serializer
-  attributes 
+  attributes :title, :artist, :image_url, :genre_id, :genre
 end

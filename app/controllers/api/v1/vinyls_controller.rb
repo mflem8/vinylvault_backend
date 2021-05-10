@@ -11,9 +11,9 @@ class Api::V1::VinylsController < ApplicationController
     end
 
     def create
-        vinyls = Vinyl.new(vinyl_params)
+        vinyl = Vinyl.new(vinyl_params)
         if vinyl.save
-            render json: vinyl, status: :accepted
+            render json: VinylSerializer.new(vinyl), status: :accepted
         else
             render json: {errors: vinyl.errors.full_messages}, status: :unprocessible_entity
         end
@@ -22,6 +22,6 @@ class Api::V1::VinylsController < ApplicationController
     private
 
     def vinyl_params
-        params.require(vinyl).permit(:title, :artist, :image_url, :genre_id)
+        params.require(:vinyl).permit(:title, :artist, :image_url, :genre_id)
     end
 end

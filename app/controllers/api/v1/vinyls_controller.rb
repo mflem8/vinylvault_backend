@@ -19,6 +19,13 @@ class Api::V1::VinylsController < ApplicationController
         end
     end
 
+    def destroy
+        vinyl = Vinyl.find(params[:id])
+        vinyl.destroy
+        render json: {message: "#{vinyl.name} was successfully deleted."}
+
+    end
+
     private
 
     def vinyl_params
